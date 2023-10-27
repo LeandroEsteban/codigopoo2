@@ -82,9 +82,10 @@ class Calculadora{
         gastosPorCategoria[categoriaSeleccionada - 1] += cantidadARestar;
         totalGastado += cantidadARestar;
         productosPorCategoria[categoriaSeleccionada - 1].add(nombreProducto);
-        System.out.println("Gasto registrado en la categoría: " + categorias[categoriaSeleccionada - 1]);
+        String categoria = categorias[categoriaSeleccionada - 1];
+        System.out.println("Gasto registrado en la categoría: " + categoria);
 
-        // Guardar el gasto en el archivo CSV del usuario
-        gestorGastos.guardarGastoEnCSV(usuario, nombreProducto, cantidadARestar, categoriaSeleccionada);
+        // Llama al método para guardar en el archivo CSV
+        gestorGastos.guardarGastoEnCSV(nombreProducto, cantidadARestar, categoria, usuario.getNombre());
     }
 }
