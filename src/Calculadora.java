@@ -85,7 +85,6 @@ class Calculadora{
         String categoria = categorias[categoriaSeleccionada - 1];
         System.out.println("Gasto registrado en la categoría: " + categoria);
 
-        // Llama al método para guardar en el archivo CSV
         gestorGastos.guardarGastoEnCSV(nombreProducto, cantidadARestar, categoria, usuario.getNombre());
     }
 }

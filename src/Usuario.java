@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Usuario {
     private static Scanner scanner = new Scanner(System.in);
-    private static String rutaUsuarios = System.getProperty("user.home") + "/Desktop/usuarios.csv";
+    private static String rutaUsuarios = System.getProperty("user.dir") + File.separator + "usuarios1.csv";
 
     private String nombre;
     private String correo;

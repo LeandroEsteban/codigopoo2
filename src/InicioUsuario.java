@@ -43,22 +43,21 @@ public class InicioUsuario {
         System.out.print("Ingresa tu nombre: ");
         String nombre = scanner.nextLine();
 
-
         String correo;
         do {
             System.out.print("Ingresa tu correo electrónico: ");
             correo = scanner.nextLine();
 
-            if (!Usuario.validarFormatoCorreo(correo)) {
-                System.out.println("El formato del correo electrónico no es válido. Por favor, inténtalo de nuevo.");
-            } else if (Usuario.correoExiste(correo)) {
+            if (Usuario.correoExiste(correo)) {
                 System.out.println("Correo ya en uso. Usa otro.");
             }
-        } while (!Usuario.validarFormatoCorreo(correo) || Usuario.correoExiste(correo));
+        } while (Usuario.correoExiste(correo));
 
-
-        System.out.print("Ingresa tu contraseña: ");
-        String contrasena = scanner.nextLine();
+        String contrasena;
+        do {
+            System.out.print("Ingresa tu contraseña (mínimo 5 caracteres): ");
+            contrasena = scanner.nextLine();
+        } while (contrasena.length() < 5);
 
         System.out.println("¿Desea continuar con la creación de la cuenta? (s/n)");
         String respuesta = scanner.nextLine().toLowerCase();

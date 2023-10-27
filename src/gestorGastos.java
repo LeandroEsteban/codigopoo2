@@ -4,7 +4,8 @@ import java.io.File;
 
 public class gestorGastos {
 
-    private static String rutaArchivo = System.getProperty("user.home") + "/Desktop/gastos.csv";
+    private static String rutaArchivo = System.getProperty("user.dir") + File.separator + "gastos1.csv";
+
 
     public static void guardarGastoEnCSV(String nombre, double cantidad, String categoria, String nombreUsuario) {
         File archivo = new File(rutaArchivo);
