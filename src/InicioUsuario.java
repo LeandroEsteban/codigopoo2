@@ -18,9 +18,9 @@ public class InicioUsuario {
                     Usuario usuario = Usuario.iniciarSesion();
                     if (usuario != null) {
                         System.out.println("Inicio de sesión exitoso. ¡Bienvenido, " + usuario.getNombre() + "!");
-                        GestorCategorias.inicializarCategorias(); // Agrega esta línea para inicializar las categorías
+                        GestorCategorias.inicializarCategorias();
                         Menu menu = new Menu(Finanzas.getCategorias(), Finanzas.getProductosPorCategoria());
-                        Calculadora calculadora = new Calculadora(); // o como la inicialices
+                        Calculadora calculadora = new Calculadora();
                         Finanzas.ejecutarMenu(usuario, menu, calculadora);
                     }
                     break;
@@ -37,7 +37,6 @@ public class InicioUsuario {
             }
         }
     }
-
     public static void crearCuenta() {
         Scanner scanner = new Scanner(System.in);
 

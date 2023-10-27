@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Finanzas {
 
@@ -28,6 +29,7 @@ public class Finanzas {
             System.out.println("No se pudo iniciar sesión. Saliendo del programa.");
         }
     }
+
     private static void inicializarCategorias() {
         categorias[0] = "Alimentación";
         categorias[1] = "Transporte";
@@ -47,6 +49,7 @@ public class Finanzas {
     public static ArrayList<String>[] getProductosPorCategoria() {
         return productosPorCategoria;
     }
+
     public static void ejecutarMenu(Usuario usuario, Menu menu, Calculadora calculadora) {
         while (true) {
             menu.mostrarMenu(calculadora.getSaldoActual());
@@ -56,7 +59,8 @@ public class Finanzas {
                     calculadora.anadirDinero();
                     break;
                 case 2:
-                    calculadora.restarDinero();
+                    Scanner scanner = new Scanner(System.in);
+                    calculadora.restarDinero(usuario, scanner);
                     break;
                 case 3:
                     calculadora.mostrarGastosPorCategoria();
@@ -69,5 +73,4 @@ public class Finanzas {
             }
         }
     }
-
 }

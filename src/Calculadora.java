@@ -48,7 +48,12 @@ class Calculadora{
 
 
 
-    public void restarDinero() {
+    private String obtenerNombreProducto(Scanner scanner) {
+        System.out.print("Ingresa el nombre del producto: ");
+        return scanner.nextLine();
+    }
+
+    public void restarDinero(Usuario usuario, Scanner scanner) {
         System.out.print("Ingresa la cantidad a restar: $");
         double cantidadARestar = validador.validarInt();
         if (cantidadARestar > 0){
@@ -61,21 +66,25 @@ class Calculadora{
             System.out.print("Selecciona la categoría en la que gastaste: ");
             int categoriaSeleccionada = (int) validador.validarInt();
             if (categoriaSeleccionada >= 1 && categoriaSeleccionada <= numCategorias) {
-                registrarGasto(cantidadARestar, categoriaSeleccionada);
+                String nombreProducto = obtenerNombreProducto(scanner);
+                registrarGasto(cantidadARestar, categoriaSeleccionada, nombreProducto, usuario);
             } else {
                 System.out.println("Categoría no válida.");
             }
-        }else{
+        } else {
             System.out.println("No puedes restar una cantidad negativa o nula.");
         }
     }
 
-    private void registrarGasto(double cantidadARestar, int categoriaSeleccionada) {
-        String nombreProducto = obtenerNombreProducto(); // Obtener nombre del producto del usuario
+
+    private void registrarGasto(double cantidadARestar, int categoriaSeleccionada, String nombreProducto, Usuario usuario) {
         saldoActual -= cantidadARestar;
         gastosPorCategoria[categoriaSeleccionada - 1] += cantidadARestar;
         totalGastado += cantidadARestar;
         productosPorCategoria[categoriaSeleccionada - 1].add(nombreProducto);
         System.out.println("Gasto registrado en la categoría: " + categorias[categoriaSeleccionada - 1]);
+
+        // Guardar el gasto en el archivo CSV del usuario
+        gestorGastos.guardarGastoEnCSV(usuario, nombreProducto, cantidadARestar, categoriaSeleccionada);
     }
 }
