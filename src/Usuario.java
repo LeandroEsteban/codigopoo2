@@ -41,7 +41,6 @@ public class Usuario {
             return null;
         }
     }
-
     public static boolean correoExiste(String correo) {
         List<Usuario> usuarios = cargarUsuarios();
 
@@ -100,4 +99,10 @@ public class Usuario {
     public String getNombre() {
         return nombre;
     }
+
+    public static boolean validarFormatoCorreo(String correo) {
+        String regex = "^[\\w.-]+@[a-zA-Z]+\\.[a-zA-Z]{2,}$";
+        return correo.matches(regex);
+    }
+
 }
